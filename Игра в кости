@@ -1,0 +1,42 @@
+import random
+
+print("Добро пожаловать в казино Ильи, присаживайся за стол друг")
+bank = int(input("Сколько фишек ты хочешь купить?"))
+print("Не мало, ну чтож делай свою ставку")
+print("Тебе напомнить правила Y/N")
+pravila = input()
+
+if pravila == "Y":
+    print("Ты и казино бросаете кости, если у тебя очков больше, ты победил, если меньшн, проиграл, все просто")
+else:
+    print("Хорошо тогда начнем")
+print("Делайте ваши ставки господа")
+stavka = int(input())
+
+print("Ставки сделаны ставок больше нет")
+if stavka > bank:
+    print("Ставка больше чем у тебя денег, так не пойдет")
+else:
+
+    igra = input("Играем Y/N")
+    while igra == "Y":
+        casino = random.randint(2,12)
+        igrok = random.randint(2,12)
+        print("Казино набрало:", casino)
+        print("Игрок набрал:", igrok)
+        if casino > igrok:
+            print("Очередная победа казино, но ты не расстрайвайся, еще отыграешься")
+            bank = bank - stavka
+            print(bank)
+        elif casino == igrok:
+            print("Похоже остаемся при своих")
+        else:
+            print("А ты молодец, обыграл нас")
+            bank = bank + stavka
+            print(bank)
+        if bank <= 0:
+                print("У кого-то закончились денюжки, ждем тебя в следующий раз")
+                break
+        else:
+                igra = input("Играем? Y/N")
+                stavka = int(input("Делаем ставки господа"))
